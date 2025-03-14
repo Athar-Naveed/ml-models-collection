@@ -1,0 +1,16 @@
+Metadata-Version: 2.2
+Name: ml-models-collection
+Version: 0.1.0
+Summary: Every sort of AI model can be found here!
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.115.8
+Requires-Dist: uvicorn>=0.34.0
+Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: orjson>=3.10.15
+Requires-Dist: ml-models-collection
+Requires-Dist: requests-cache>=1.2.1
+Requires-Dist: retry-requests>=2.0.0
+Requires-Dist: numpy>=2.2.3
+Requires-Dist: pandas>=2.2.3
+Requires-Dist: scikit-learn>=1.6.1

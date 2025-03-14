@@ -1,0 +1,24 @@
+[project]
+name = "ml-models-collection"
+version = "0.1.0"
+description = "Every sort of AI model can be found here!"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.8",
+    "uvicorn>=0.34.0",
+    "python-dotenv>=1.0.1",
+    "orjson>=3.10.15",
+    "requests-cache>=1.2.1",
+    "retry-requests>=2.0.0",
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "scikit-learn>=1.6.1",
+]
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/backend"]
+
+[tool.uv.sources]
+ml-models-collection = { workspace = true }
