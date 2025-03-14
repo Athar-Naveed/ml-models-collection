@@ -22,5 +22,5 @@ async def root():
 if __name__ == "__main__":
     import uvicorn
     import os
-    port = int(os.getenv("PORT", 10000))  # Use Render's default port
+    port = int(os.getenv("PORT", 8000))  # Use Render's default port
     uvicorn.run("server:app", host="0.0.0.0", port=port, reload=True)
