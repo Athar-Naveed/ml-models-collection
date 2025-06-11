@@ -2,15 +2,14 @@ from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import ORJSONResponse
 from ..utils.weather_data import Weather
 
+router = APIRouter(default_response_class=ORJSONResponse)
 
-app = APIRouter(default_response_class=ORJSONResponse)
-
-@app.post("/weather")
-async def get_weather(ip:dict):
-    
+@router.post("/weather")
+async def get_weather(ip: dict):
     weather_model = Weather()
     try:
         data = weather_model.getLocation(ip['ip'])
+        print("working there?")
         return {"data": data}
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))

@@ -1,7 +1,7 @@
+import sys
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import weather
-import sys
+from src.backend.routers import weather
 print("Starting FastAPI server...", file=sys.stderr)
 app:FastAPI = FastAPI()
 
@@ -12,7 +12,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
-app.include_router(weather.app)
+app.include_router(weather.router)
 
 @app.get("/")
 async def root():
