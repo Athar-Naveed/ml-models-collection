@@ -15,25 +15,25 @@ class Weather:
         self.city = ""
         self.weather = WeatherPrediction()
         
-    def getLocation(self, ip):
+    def getLocation(self, region,lat,lon):
         try:
-            url = f"https://ip-to-location-geolocation-by-ip.p.rapidapi.com/{ip}"
-            print(f"self rapid api key: {self.rapid_api_key}")
-            headers = {
-                "x-rapidapi-key": self.rapid_api_key,
-                "x-rapidapi-host": "ip-to-location-geolocation-by-ip.p.rapidapi.com"
-            }
+            # url = f"https://ip-to-location-geolocation-by-ip.p.rapidapi.com/{ip}"
+            # print(f"self rapid api key: {self.rapid_api_key}")
+            # headers = {
+            #     "x-rapidapi-key": self.rapid_api_key,
+            #     "x-rapidapi-host": "ip-to-location-geolocation-by-ip.p.rapidapi.com"
+            # }
 
-            response = requests.get(url, headers=headers)
+            # response = requests.get(url, headers=headers)
 
-            print(response.json())
-            location_data = response.json()
-            if 'lat' not in location_data or 'lon' not in location_data or 'city' not in location_data:
-                raise ValueError("Missing required location data in API response")
+            # print(response.json())
+            # location_data = response.json()
+            # if 'lat' not in location_data or 'lon' not in location_data or 'city' not in location_data:
+            #     raise ValueError("Missing required location data in API response")
                 
-            self.lat = location_data['lat']
-            self.lon = location_data['lon']
-            self.city = location_data['city']
+            self.lat = lat
+            self.lon = lon
+            self.city = region
             
             condition_code = self.get_current_weather(self.lat, self.lon)
             
