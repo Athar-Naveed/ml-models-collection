@@ -15,7 +15,7 @@ class Weather:
         self.city = ""
         self.weather = WeatherPrediction()
         
-    def getLocation(self, region,lat,lon):
+    def getLocation(self, city,lat,lon):
         try:
             # url = f"https://ip-to-location-geolocation-by-ip.p.rapidapi.com/{ip}"
             # print(f"self rapid api key: {self.rapid_api_key}")
@@ -33,7 +33,7 @@ class Weather:
                 
             self.lat = lat
             self.lon = lon
-            self.city = region
+            self.city = city
             
             condition_code = self.get_current_weather(self.lat, self.lon)
             

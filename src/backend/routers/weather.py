@@ -7,16 +7,16 @@ router = APIRouter(default_response_class=ORJSONResponse)
 @router.post("/weather")
 async def get_weather(region_data: dict):
     try:
-        region = region_data.get("region")
+        city = region_data.get("city")
         lat = region_data.get("lat")
         lon = region_data.get("lon")
 
-        if not region or lat is None or lon is None:
-            raise ValueError("Missing region, lat, or lon")
+        if not city or lat is None or lon is None:
+            raise ValueError("Missing city, lat, or lon")
 
         weather_model = Weather()
-        data = weather_model.getLocation(region, lat, lon)
+        data = weather_model.getLocation(city, lat, lon)
 
-        return {"data": data}
+        return {"data": data,"actual_temp":actual_temp,"predicted":predicted}
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
