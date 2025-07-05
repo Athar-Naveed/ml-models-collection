@@ -5,10 +5,23 @@ from ..utils.weather_data import Weather
 router = APIRouter(default_response_class=ORJSONResponse)
 
 @router.post("/weather")
-async def get_weather(ip: dict):
-    weather_model = Weather()
+async def get_weather(region_data: dict):
     try:
+<<<<<<< HEAD
         data = weather_model.getLocation(ip['ip'])
         return {"data": data}
+=======
+        city = region_data.get("city")
+        lat = region_data.get("lat")
+        lon = region_data.get("lon")
+
+        if not city or lat is None or lon is None:
+            raise ValueError("Missing city, lat, or lon")
+
+        weather_model = Weather()
+        data = weather_model.getLocation(city, lat, lon)
+
+        return {"data": data,"actual_temp":actual_temp,"predicted":predicted}
+>>>>>>> origin/asad-ali
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
