@@ -1,5 +1,4 @@
 .env
 .vercel
-.env
 weather_model.pth
 .cache.sqlite
