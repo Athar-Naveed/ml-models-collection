@@ -27,7 +27,7 @@ class Weather:
             # response = requests.get(url, headers=headers)
 
             # print(response.json())
-            # location_data = response.json()
+            # location_data = response.json()   
             # if 'lat' not in location_data or 'lon' not in location_data or 'city' not in location_data:
             #     raise ValueError("Missing required location data in API response")
                 
@@ -37,10 +37,10 @@ class Weather:
             
             condition_code = self.get_current_weather(self.lat, self.lon)
             
-            self.weather.get_weather_history(self.lat,self.lon)
+            atharbhai= self.weather.get_weather_history(self.lat,self.lon)
+            print(f"working2{atharbhai}")
             
-            
-            return {"condition": condition_code, "city": self.city}
+            return {"condition": condition_code, "city": self.city,"forcasted":atharbhai}
             
         except requests.RequestException as e:
             raise Exception(f"Error fetching location data: {str(e)}")

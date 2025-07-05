@@ -20,8 +20,13 @@ async def get_weather(region_data: dict):
 
         weather_model = Weather()
         data = weather_model.getLocation(city, lat, lon)
+<<<<<<< HEAD
 
         return {"data": data,"actual_temp":actual_temp,"predicted":predicted}
+>>>>>>> origin/asad-ali
+=======
+        print(f"data{data}")
+        return {"data": data}
 >>>>>>> origin/asad-ali
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))

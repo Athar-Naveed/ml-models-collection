@@ -49,7 +49,9 @@ class WeatherPrediction:
         daily_data["temperature_2m_max"] = daily_temperature_2m_max.astype(int)
         daily_dataframe = pd.DataFrame(data=daily_data)
 
-        self.weather_prediction_model(daily_dataframe)
+        responce=self.weather_prediction_model(daily_dataframe)
+        print(f"responce{responce}")
+        return responce
 
     def weather_prediction_model(self, df):
         df['date_ordinal'] = df['date'].map(pd.Timestamp.toordinal)
@@ -99,7 +101,12 @@ class WeatherPrediction:
         print(f"📈 MAE: {mae:.2f}")
         print(f"📉 MSE: {mse:.2f}")
         print(f"📊 RMSE: {rmse:.2f}")
+        print(f"working")
 
+        return {
+            "actual_temps":y.tolist(),
+            "predicted_temps":predicted.flatten().tolist()
+        }
         # Save Model
         torch.save(model.state_dict(), "weather_model.pth")
 
